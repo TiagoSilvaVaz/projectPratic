@@ -1,15 +1,14 @@
-//pesquisar como obter a lista de clientes do firebase 
 import React from "react"
 import app from '../firebase'
 import { getDatabase, ref, set } from "firebase/database";
 
 
-class CadastroCliente extends React.Component {
-    no_database = 'clientes'
+class CadastroConteiner extends React.Component {
+    no_database = 'conteiner'
 
     state ={
-        nome: '',
-        documento: '',
+        identificacao: '',
+        nomeDoCliente: '',
     }
 
     handleChanger = (event) => {
@@ -41,8 +40,8 @@ class CadastroCliente extends React.Component {
     cadastrar = () => {
         //preparar objeto para o firebase
         let novoCadastro = {
-            nome: this.state.nome,
-            documento: this.state.documento
+            identificacao: this.state.identificacao,
+            nomeDoCliente: this.state.nomeDoCliente
         };
 
         //subir para o firebase
@@ -56,8 +55,8 @@ class CadastroCliente extends React.Component {
 
         return (
             <div>
-                {this.state.nome} <br/>
-                {this.state.documento} <br/>
+                {this.state.identificacao} <br/>
+                {this.state.nomeDoCliente} <br/>
                 <div className="form-group input-group">
                     <div className="input-grou-prepend">
                         <div className="input-group-text">
@@ -65,9 +64,9 @@ class CadastroCliente extends React.Component {
         
                         </div>
                     </div>
-                    <input className="form-control" placeholder="Nome completo"  
+                    <input className="form-control" placeholder="Identificação do conteiner"  
                         value={this.state.nome} 
-                        name="nome" 
+                        nomeDoCliente="cliente" 
                         onChange={this.handleChanger} />
                 </div>
                 <div className="form-group input-group">
@@ -77,9 +76,9 @@ class CadastroCliente extends React.Component {
         
                         </div>
                     </div>
-                    <input className="form-control" placeholder="Documento"  
+                    <input className="form-control" placeholder="Cliente"  
                         value={this.state.documento} 
-                        name="documento" 
+                        nomeDoCliente="Cliente" 
                         onChange={this.handleChanger} />
                 </div>
                     <button onClick ={this.cadastrar}>salvar</button>
@@ -101,4 +100,4 @@ class CadastroCliente extends React.Component {
     }
 }
 
-export default CadastroCliente
+export default CadastroConteiner
